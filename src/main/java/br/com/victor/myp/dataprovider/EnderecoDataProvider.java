@@ -1,6 +1,7 @@
 package br.com.victor.myp.dataprovider;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.com.victor.myp.core.entity.EnderecoEntity;
 import br.com.victor.myp.dataprovider.entity.CidadeTable;
@@ -9,6 +10,7 @@ import br.com.victor.myp.dataprovider.mapper.CidadeMapper;
 import br.com.victor.myp.dataprovider.mapper.EnderecoMapper;
 import br.com.victor.myp.dataprovider.repository.EnderecoRepository;
 
+@Component
 public class EnderecoDataProvider {
 
 	@Autowired
