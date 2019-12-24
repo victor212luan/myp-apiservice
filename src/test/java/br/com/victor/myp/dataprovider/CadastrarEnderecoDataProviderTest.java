@@ -21,8 +21,6 @@ import br.com.victor.myp.dataprovider.repository.EstadoRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CadastrarEnderecoDataProviderTest {
-
-	// TODO Desenvolver testes de falha no DataProvider
 	
 	@InjectMocks private EstadoDataProvider estadodataprovider;
 	@InjectMocks private CidadeDataProvider cidadedataprovider;
@@ -65,5 +63,26 @@ public class CadastrarEnderecoDataProviderTest {
 		EnderecoEntity result = enderecodataprovider.cadastrarEndereco(endereco);
 		
 		Assert.assertThat(result, Matchers.any(EnderecoEntity.class));
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void CadastrarEstadoDataProvider_exception() {
+		Mockito.doThrow(new RuntimeException("Teste")).when(estadorepository).save(Mockito.any(EstadoTable.class));
+		
+		estadodataprovider.cadastrarEstado(estado);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void CadastrarCidadeDataProvider_exception() {
+		Mockito.doThrow(new RuntimeException("Teste")).when(cidaderepository).save(Mockito.any(CidadeTable.class));
+		
+		cidadedataprovider.cadastrarCidade(cidade);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void CadastrarEnderecoDataProvider_exception() {
+		Mockito.doThrow(new RuntimeException("Teste")).when(enderecorepository).save(Mockito.any(EnderecoTable.class));
+		
+		enderecodataprovider.cadastrarEndereco(endereco);
 	}
 }
