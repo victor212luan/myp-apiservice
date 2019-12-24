@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import br.com.victor.myp.core.entity.EstadoEntity;
-
 @Entity
 public class CidadeTable {
 
@@ -21,13 +19,13 @@ public class CidadeTable {
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name= "id_estado", nullable = false) 
-	private EstadoEntity estado;
+	@JoinColumn(name= "id_estado") 
+	private EstadoTable estado;
 	
 	public CidadeTable() {
 	}
 
-	public CidadeTable(Long id, String nome, EstadoEntity estado) {
+	public CidadeTable(Long id, String nome, EstadoTable estado) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -50,11 +48,11 @@ public class CidadeTable {
 		this.nome = nome;
 	}
 
-	public EstadoEntity getEstado() {
+	public EstadoTable getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoEntity estado) {
+	public void setEstado(EstadoTable estado) {
 		this.estado = estado;
 	}
 }

@@ -35,8 +35,8 @@ public class CadastrarEnderecoDataProviderTest {
 	EnderecoEntity endereco = new EnderecoEntity(1L,"Rua Espírito Santo",391,"apt 122","1170190","Canto do Forte",cidade);
 	
 	EstadoTable estadoTable = new EstadoTable(1L,"SP","São Paulo");
-	CidadeTable cidadeTable = new CidadeTable(1L,"Praia Grande",estado);
-	EnderecoTable enderecoTable = new EnderecoTable(1L,"Rua Espírito Santo",391,"apt 122","1170190","Canto do Forte",cidade);
+	CidadeTable cidadeTable = new CidadeTable(1L,"Praia Grande",estadoTable);
+	EnderecoTable enderecoTable = new EnderecoTable(1L,"Rua Espírito Santo",391,"apt 122","1170190","Canto do Forte",cidadeTable);
 	
 	@Test
 	public void CadastrarEstadoDataProvider_success() {

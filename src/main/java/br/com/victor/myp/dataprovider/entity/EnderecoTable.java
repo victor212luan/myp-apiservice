@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import br.com.victor.myp.core.entity.CidadeEntity;
-
 @Entity
 public class EnderecoTable {
 
@@ -34,12 +32,12 @@ public class EnderecoTable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cidade", nullable = false)
-	private CidadeEntity cidade;
+	private CidadeTable cidade;
 	
 	public EnderecoTable(){
 	}
 
-	public EnderecoTable(Long id, String logradouro, Integer numero, String complemento, String cep, String bairro, CidadeEntity cidade) {
+	public EnderecoTable(Long id, String logradouro, Integer numero, String complemento, String cep, String bairro, CidadeTable cidade) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
@@ -98,11 +96,11 @@ public class EnderecoTable {
 		this.bairro = bairro;
 	}
 
-	public CidadeEntity getCidade() {
+	public CidadeTable getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(CidadeEntity cidade) {
+	public void setCidade(CidadeTable cidade) {
 		this.cidade = cidade;
 	}
 }
