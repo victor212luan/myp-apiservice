@@ -11,9 +11,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.victor.myp.core.entity.CidadeEntity;
-import br.com.victor.myp.core.entity.EstadoEntity;
-
 @RunWith(MockitoJUnitRunner.class)
 public class CidadeEntrypointTest {
 
@@ -22,10 +19,10 @@ public class CidadeEntrypointTest {
 	
 	@Test
 	public void CidadeEntrypoint_success_post() throws Exception{
-		EstadoEntity estado = new EstadoEntity(1L,"SP","São Paulo");
+		EstadoHttpModel estado = new EstadoHttpModel(1L,"SP","São Paulo");
 		mvc.perform( MockMvcRequestBuilders
 		      .post("/cidades")
-		      .content(asJsonString(new CidadeEntity(1L,"Blumenau",estado)))
+		      .content(asJsonString(new CidadeHttpModel(1L,"São Paulo",estado)))
 		      .contentType(MediaType.APPLICATION_JSON)
 		      .accept(MediaType.APPLICATION_JSON))
 		      .andExpect(MockMvcResultMatchers.status().isCreated());
