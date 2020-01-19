@@ -2,6 +2,7 @@ package br.com.victor.myp.dataprovider.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,10 +16,10 @@ public class CidadeTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name= "nm_cidade", length = 25, nullable = false) 
+	@Column(name= "nm_cidade", length = 25) 
 	private String nome;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name= "id_estado") 
 	private EstadoTable estado;
 	

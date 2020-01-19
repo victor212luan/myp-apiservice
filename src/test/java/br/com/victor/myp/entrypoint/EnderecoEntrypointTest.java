@@ -18,6 +18,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.victor.myp.core.entity.EnderecoEntity;
+import br.com.victor.myp.core.usecase.CadastrarEnderecoUseCase;
+import br.com.victor.myp.entrypoint.entity.EnderecoHttpModel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EnderecoEntrypointTest {
@@ -46,7 +48,7 @@ public class EnderecoEntrypointTest {
 	
 		this.mockMvc.perform(
 			MockMvcRequestBuilders
-			.post("/enderecos")
+			.post("/enderecos/")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content( new ObjectMapper().writeValueAsString(httpModel) )
 			).andExpect(status().isCreated());

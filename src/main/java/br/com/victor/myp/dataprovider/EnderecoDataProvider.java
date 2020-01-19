@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.victor.myp.core.entity.EnderecoEntity;
+import br.com.victor.myp.core.gateway.EnderecoGateway;
 import br.com.victor.myp.dataprovider.entity.CidadeTable;
 import br.com.victor.myp.dataprovider.entity.EnderecoTable;
 import br.com.victor.myp.dataprovider.mapper.CidadeMapper;
@@ -11,7 +12,7 @@ import br.com.victor.myp.dataprovider.mapper.EnderecoMapper;
 import br.com.victor.myp.dataprovider.repository.EnderecoRepository;
 
 @Component
-public class EnderecoDataProvider {
+public class EnderecoDataProvider implements EnderecoGateway {
 
 	@Autowired
 	private EnderecoRepository enderecoRepository;

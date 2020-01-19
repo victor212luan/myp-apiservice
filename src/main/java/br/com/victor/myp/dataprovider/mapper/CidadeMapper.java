@@ -9,13 +9,13 @@ public class CidadeMapper {
 
 	public static CidadeEntity to(CidadeTable table) {
 		return Optional.ofNullable(table).map(e -> new CidadeEntity(
-			e.getId(), e.getNome(), null))
+			e.getId(), e.getNome(), EstadoMapper.to(e.getEstado())))
 			.orElse(new CidadeEntity());
 	}
 	
 	public static CidadeTable from(CidadeEntity entity) {
 		return Optional.ofNullable(entity).map(e -> new CidadeTable(
-			e.getId(), e.getNome(), null))
+			e.getId(), e.getNome(), EstadoMapper.from(e.getEstado())))
 			.orElse(new CidadeTable());
 	}
 }
