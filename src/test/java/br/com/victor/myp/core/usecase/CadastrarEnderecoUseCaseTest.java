@@ -54,12 +54,6 @@ public class CadastrarEnderecoUseCaseTest {
 		EnderecoEntity endereco = new EnderecoEntity(null,null,null,null,null,null,cidade);
 		
 		Mockito.doThrow(new RuntimeException("Falha na persistência"))
-			.when(estadoDataProvider).cadastrarEstado(Mockito.any(EstadoEntity.class));
-		
-		Mockito.doThrow(new RuntimeException("Falha na persistência"))
-			.when(cidadeDataProvider).cadastrarCidade(Mockito.any(CidadeEntity.class));
-		
-		Mockito.doThrow(new RuntimeException("Falha na persistência"))
 			.when(enderecoDataProvider).cadastrarEndereco(Mockito.any(EnderecoEntity.class));
 		
 		useCase.cadastrarEndereco(endereco);
