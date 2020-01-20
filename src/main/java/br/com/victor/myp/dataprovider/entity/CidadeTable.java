@@ -16,11 +16,11 @@ public class CidadeTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name= "nm_cidade", length = 25) 
+	@Column(name= "nm_cidade", length = 25, nullable = false) 
 	private String nome;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name= "id_estado") 
+	@JoinColumn(name= "id_estado", nullable = false) 
 	private EstadoTable estado;
 	
 	public CidadeTable() {

@@ -32,7 +32,7 @@ public class EnderecoTable {
 	private String bairro;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_cidade")
+	@JoinColumn(name = "id_cidade", nullable = false)
 	private CidadeTable cidade;
 	
 	public EnderecoTable(){

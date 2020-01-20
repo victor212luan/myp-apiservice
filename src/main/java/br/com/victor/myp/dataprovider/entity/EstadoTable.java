@@ -13,8 +13,8 @@ public class EstadoTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "sg_estado", length = 2) private String sigla;
-	@Column(name = "nm_estado", length = 20) private String nome;
+	@Column(name = "sg_estado", length = 2, nullable = false) private String sigla;
+	@Column(name = "nm_estado", length = 20, nullable = false) private String nome;
 	
 	public EstadoTable() {
 	}
