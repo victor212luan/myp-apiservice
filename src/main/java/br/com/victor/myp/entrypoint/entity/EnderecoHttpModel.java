@@ -1,44 +1,21 @@
-package br.com.victor.myp.dataprovider.entity;
+package br.com.victor.myp.entrypoint.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+public class EnderecoHttpModel {
 
-@Entity
-public class EnderecoTable {
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="nm_logradouro", nullable = false) 
 	private String logradouro;
-	
-	@Column(name="cd_numero", nullable = false) 
 	private Integer numero;
-	
-	@Column(name="ds_complemento", nullable = true) 
 	private String complemento;
-	
-	@Column(name="cd_cep", nullable = false) 
 	private String cep;
-	
-	@Column(name="nm_bairro", nullable = false) 
 	private String bairro;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_cidade", nullable = false)
-	private CidadeTable cidade;
+	private CidadeHttpModel cidade;
 	
-	public EnderecoTable(){
+	public EnderecoHttpModel(){
 	}
 
-	public EnderecoTable(Long id, String logradouro, Integer numero, String complemento, String cep, String bairro, CidadeTable cidade) {
+	public EnderecoHttpModel(Long id, String logradouro, Integer numero, String complemento, String cep, String bairro, CidadeHttpModel cidade) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
@@ -97,11 +74,12 @@ public class EnderecoTable {
 		this.bairro = bairro;
 	}
 
-	public CidadeTable getCidade() {
+	public CidadeHttpModel getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(CidadeTable cidade) {
+	public void setCidade(CidadeHttpModel cidade) {
 		this.cidade = cidade;
 	}
+	
 }

@@ -1,12 +1,16 @@
 package br.com.victor.myp.dataprovider;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.com.victor.myp.core.entity.CidadeEntity;
 import br.com.victor.myp.dataprovider.entity.CidadeTable;
+import br.com.victor.myp.dataprovider.entity.EstadoTable;
 import br.com.victor.myp.dataprovider.mapper.CidadeMapper;
+import br.com.victor.myp.dataprovider.mapper.EstadoMapper;
 import br.com.victor.myp.dataprovider.repository.CidadeRepository;
 
+@Component
 public class CidadeDataProvider {
 
 	@Autowired
@@ -15,6 +19,9 @@ public class CidadeDataProvider {
 	public CidadeEntity cadastrarCidade(CidadeEntity entity) {
 		try {
 			CidadeTable table = CidadeMapper.from(entity);	
+			EstadoTable estado = EstadoMapper.from(entity.getEstado());
+			
+			table.setEstado(estado);
 			
 			table = cidadeRepository.save(table);
 			entity = CidadeMapper.to(table);

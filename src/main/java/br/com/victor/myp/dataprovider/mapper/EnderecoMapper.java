@@ -11,14 +11,14 @@ public class EnderecoMapper {
 	public static EnderecoEntity to(EnderecoTable table) {
 		return Optional.ofNullable(table).map(e -> new EnderecoEntity(
 			e.getId(), e.getLogradouro(), e.getNumero(), e.getComplemento(), e.getCep(),
-			e.getBairro(), e.getCidade()))
+			e.getBairro(), CidadeMapper.to(e.getCidade())))
 			.orElse(new EnderecoEntity());
 	}
 	
 	public static EnderecoTable from(EnderecoEntity entity) {
 		return Optional.ofNullable(entity).map(e -> new EnderecoTable(
 			e.getId(), e.getLogradouro(), e.getNumero(), e.getComplemento(), e.getCep(),
-			e.getBairro(), e.getCidade()))
+			e.getBairro(), CidadeMapper.from(e.getCidade())))
 			.orElse(new EnderecoTable());
 	}
 }

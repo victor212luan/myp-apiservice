@@ -1,12 +1,14 @@
 package br.com.victor.myp.dataprovider;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.com.victor.myp.core.entity.EstadoEntity;
 import br.com.victor.myp.dataprovider.entity.EstadoTable;
 import br.com.victor.myp.dataprovider.mapper.EstadoMapper;
 import br.com.victor.myp.dataprovider.repository.EstadoRepository;
 
+@Component
 public class EstadoDataProvider {
 
 	@Autowired
