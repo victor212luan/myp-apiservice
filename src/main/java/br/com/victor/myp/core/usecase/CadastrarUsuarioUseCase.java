@@ -12,8 +12,7 @@ public class CadastrarUsuarioUseCase {
 	@Autowired
 	private UsuarioGateway usuarioGateway;
 	
-	public UsuarioEntity cadastrarUsuario(UsuarioEntity entity, String pathImagem) {	
-		entity.setImagemUsuario(pathImagem);
+	public UsuarioEntity cadastrarUsuario(UsuarioEntity entity) {	
 		
 		return usuarioGateway.cadastrarUsuario(entity);
 	}

@@ -19,8 +19,10 @@ public class SaveImage {
     private String directoryFotos;
 
 
-    public void saveFoto(MultipartFile foto) {
+    public String saveFoto(MultipartFile foto) {
         this.save(this.directoryFotos, foto);
+        
+        return "Arquivo salvo";
     }
 
     private void save(String directory, MultipartFile file) {
@@ -32,7 +34,7 @@ public class SaveImage {
             file.transferTo(filePath.toFile());
             
         } catch (IOException e) {
-            throw new RuntimeException("Problemas na tentativa de salvar aquivo.", e);
+            throw new RuntimeException("Problemas na tentativa de salvar arquivo.", e);
         }
     }
 
