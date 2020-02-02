@@ -1,0 +1,24 @@
+Crud de Conteiner
+	Cliente
+	Número do cntr (4 letras, 7 números)
+	Tipo: 20 / 40
+	Status: Cheio / Vazio
+	Categoria: Importação / Exportação
+	
+Crud de Movimentações
+	Navio
+	Tipo de Movimentação (Embarque, Descarga, Gate In, Gate out, Posicionamento Pilha, Pesagem, Scanner)
+	Data de Início
+	Data de Fim
+
+Gerar um relatório de movimentações agrupado por cliente e tipo de movimentação
+No final do relatório um sumário (total) de importação / exportação
+
+Premissas para todos os artefatos:
+Validações
+Ordenações
+Filtragem
+
+Funcionalidade (Atender o que foi solicitado) - 7
+Usabilidade e Design (Layout agradável) - 2
+Qualidade de Código (Código bem estruturado e limpo) - 1

@@ -45,9 +45,8 @@ public class UsuarioEntrypoint {
 	
 	@RequestMapping(value = "/file", consumes = {"multipart/form-data"})
 	public ResponseEntity<String> salvarImagem(@RequestPart MultipartFile file){
-		
 		image.saveFoto(file);
-		String savedPath = image.getRoot() + "/" + image.getDirectoryFotos() + "/" + file.getName() + ".png";
+		String savedPath = image.getRoot() + "/" + image.getDirectoryFotos() + "/" + file.getOriginalFilename();
 		
 		return ResponseEntity.ok().body(savedPath);
 	}
