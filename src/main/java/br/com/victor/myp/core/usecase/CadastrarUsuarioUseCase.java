@@ -1,6 +1,7 @@
 package br.com.victor.myp.core.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.victor.myp.core.entity.UsuarioEntity;
@@ -12,7 +13,11 @@ public class CadastrarUsuarioUseCase {
 	@Autowired
 	private UsuarioGateway usuarioGateway;
 	
-	public UsuarioEntity cadastrarUsuario(UsuarioEntity entity) {	
+	private BCryptPasswordEncoder encoderPassword = new BCryptPasswordEncoder();
+	
+	public UsuarioEntity cadastrarUsuario(UsuarioEntity entity) {
+		String senhaUsuario = entity.getSenha();
+		entity.setSenha(encoderPassword.encode(senhaUsuario));
 		
 		return usuarioGateway.cadastrarUsuario(entity);
 	}

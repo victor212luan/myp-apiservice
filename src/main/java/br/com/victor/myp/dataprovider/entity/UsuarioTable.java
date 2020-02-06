@@ -22,10 +22,10 @@ public class UsuarioTable {
 	@Column(name = "cd_email", nullable = false, length = 60)
 	private String email;
 	
-	@Column(name = "cd_senha", nullable = false, length = 16)
+	@Column(name = "cd_senha", nullable = false)
 	private String senha;
 	
-	@Column(name = "im_imagem", nullable = true, length = 300)
+	@Column(name = "im_imagem", nullable = false, length = 300)
 	private String imagemUsuario;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
