@@ -32,7 +32,7 @@ public class CadastrarEnderecoUseCaseTest {
 	
 	@Test
 	public void cadastrarEndereco_success() throws Exception {
-		EstadoEntity estado = new EstadoEntity();
+		EstadoEntity estado = new EstadoEntity(null,null,null);
 		CidadeEntity cidade = new CidadeEntity(null,null,estado);
 		EnderecoEntity endereco = new EnderecoEntity(null,null,null,null,null,null,cidade);
 		
@@ -49,7 +49,7 @@ public class CadastrarEnderecoUseCaseTest {
 	
 	@Test(expected = RuntimeException.class)
 	public void cadastrarEndereco_exception() {
-		EstadoEntity estado = new EstadoEntity();
+		EstadoEntity estado = new EstadoEntity(null,null,null);
 		CidadeEntity cidade = new CidadeEntity(null,null,estado);
 		EnderecoEntity endereco = new EnderecoEntity(null,null,null,null,null,null,cidade);
 		
