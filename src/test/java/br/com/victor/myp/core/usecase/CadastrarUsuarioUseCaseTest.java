@@ -12,6 +12,7 @@ import br.com.victor.myp.core.entity.CidadeEntity;
 import br.com.victor.myp.core.entity.EnderecoEntity;
 import br.com.victor.myp.core.entity.EstadoEntity;
 import br.com.victor.myp.core.entity.UsuarioEntity;
+import br.com.victor.myp.dataprovider.EnderecoDataProvider;
 import br.com.victor.myp.dataprovider.UsuarioDataProvider;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,19 +23,26 @@ public class CadastrarUsuarioUseCaseTest {
 	
 	@Mock
 	private UsuarioDataProvider usuarioDataProvider;
+	@Mock
+	private EnderecoDataProvider enderecoDataProvider;
 	
 	@Test
 	public void cadastrarUsuario_success() throws Exception {
-		EstadoEntity estado = new EstadoEntity(null,null,null);
+		EstadoEntity estado = new EstadoEntity(null, null);
 		CidadeEntity cidade = new CidadeEntity(null,null,estado);
 		EnderecoEntity endereco = new EnderecoEntity(null,null,null,null,null,null,cidade);
-		UsuarioEntity usuario = new UsuarioEntity(null,null,null,"senhaParaSerEncriptada",null,endereco);
+		UsuarioEntity usuario = new UsuarioEntity(null,null,null,null,null,"senhaParaSerEncriptada",null,endereco);
 		
+		EnderecoEntity enderecoSalvo = endereco;
+		enderecoSalvo.setId(1L);
+
 		UsuarioEntity modelo = usuario;
 		modelo.setImagemUsuario("/tmp/profiles/images/teste.png");
 		modelo.setSenha("qMtb8ht4iuIgNgMTQPNgQFFgaTxEH8uvvNM");
+		modelo.setEndereco(enderecoSalvo);
 		
-		Mockito.when(usuarioDataProvider.cadastrarUsuario(Mockito.any(UsuarioEntity.class))).thenReturn(usuario);
+		Mockito.when(enderecoDataProvider.cadastrarEndereco(Mockito.any(EnderecoEntity.class))).thenReturn(enderecoSalvo);
+		Mockito.when(usuarioDataProvider.cadastrarUsuario(Mockito.any(UsuarioEntity.class))).thenReturn(modelo);
 		
 		UsuarioEntity response = useCase.cadastrarUsuario(usuario);
 		
@@ -43,10 +51,7 @@ public class CadastrarUsuarioUseCaseTest {
 	
 	@Test(expected = RuntimeException.class)
 	public void cadastrarUsuario_exception() {
-		EstadoEntity estado = new EstadoEntity(null,null,null);
-		CidadeEntity cidade = new CidadeEntity(null,null,estado);
-		EnderecoEntity endereco = new EnderecoEntity(null,null,null,null,null,null,cidade);
-		UsuarioEntity usuario = new UsuarioEntity(null,null,null,"senhaParaSerEncriptada",null,endereco);
+		UsuarioEntity usuario = new UsuarioEntity(null,null,null,null,null,"senhaParaSerEncriptada",null,null);
 				
 		Mockito.doThrow(new RuntimeException("Falha na persistência"))
 			.when(usuarioDataProvider).cadastrarUsuario(Mockito.any(UsuarioEntity.class));

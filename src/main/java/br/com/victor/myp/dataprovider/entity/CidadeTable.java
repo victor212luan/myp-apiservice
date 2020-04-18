@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,8 +23,8 @@ public class CidadeTable {
 	@Column(name= "nm_cidade", length = 25, nullable = false) 
 	private String nome;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name= "id_estado", nullable = false) 
+	@ManyToOne
+	@JoinColumn(name= "id_estado") 
 	private EstadoTable estado;
 	
 	@JsonBackReference

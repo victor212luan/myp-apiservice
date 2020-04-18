@@ -27,12 +27,16 @@ public class EnderecoDataProvider implements EnderecoGateway {
 	
 	public EnderecoEntity cadastrarEndereco(EnderecoEntity entity) {
 		try {
-			EnderecoTable table = EnderecoMapper.from(entity);	
-			CidadeTable cidade = CidadeMapper.from(entity.getCidade());
 			EstadoTable estado = EstadoMapper.from(entity.getCidade().getEstado());
+			CidadeTable cidade = CidadeMapper.from(entity.getCidade());
+			EnderecoTable table = EnderecoMapper.from(entity);	
 			
 			estado = estadoRepository.save(estado);
+			cidade.setEstado(estado);
+			
 			cidade = cidadeRepository.save(cidade);
+			table.setCidade(cidade);
+			
 			table = enderecoRepository.save(table);
 			
 			entity = EnderecoMapper.to(table);

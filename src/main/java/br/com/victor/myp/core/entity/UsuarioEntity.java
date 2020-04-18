@@ -18,7 +18,7 @@ public class UsuarioEntity {
 		super();
 		this.id = id;
 		this.tipoUsuario = tipoUsuario;
-		CpfCnpj = cpfCnpj;
+		this.CpfCnpj = cpfCnpj;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;

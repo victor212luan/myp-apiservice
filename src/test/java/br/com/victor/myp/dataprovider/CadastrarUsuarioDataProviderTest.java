@@ -9,13 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import br.com.victor.myp.core.entity.CidadeEntity;
-import br.com.victor.myp.core.entity.EnderecoEntity;
-import br.com.victor.myp.core.entity.EstadoEntity;
 import br.com.victor.myp.core.entity.UsuarioEntity;
-import br.com.victor.myp.dataprovider.entity.CidadeTable;
-import br.com.victor.myp.dataprovider.entity.EnderecoTable;
-import br.com.victor.myp.dataprovider.entity.EstadoTable;
 import br.com.victor.myp.dataprovider.entity.UsuarioTable;
 import br.com.victor.myp.dataprovider.repository.UsuarioRepository;
 
@@ -26,15 +20,11 @@ public class CadastrarUsuarioDataProviderTest {
 	
 	@Mock private UsuarioRepository usuariorepository;
 	
-	EstadoEntity estado = new EstadoEntity(1L,"SP","São Paulo");
-	CidadeEntity cidade = new CidadeEntity(1L,"Praia Grande",estado);
-	EnderecoEntity endereco = new EnderecoEntity(1L,"Rua Espírito Santo",391,"apt 122","1170190","Canto do Forte",cidade);
-	UsuarioEntity usuario = new UsuarioEntity(1L, "Victor", "victor@myp.com",  "KAskdAHJFA", "path/imagem",endereco);
+	// As entidades entram com id nulo, e retornam com id após salvo no banco
+	UsuarioEntity usuario = new UsuarioEntity(null, "Usuario", "12345678909", "Victor", "victor@myp.com",  "KAskdAHJFA", "path/imagem",null);
 	
-	EstadoTable estadoTable = new EstadoTable(1L,"SP","São Paulo");
-	CidadeTable cidadeTable = new CidadeTable(1L,"Praia Grande",estadoTable);
-	EnderecoTable enderecoTable = new EnderecoTable(1L,"Rua Espírito Santo",391,"apt 122","1170190","Canto do Forte",cidadeTable);
-	UsuarioTable usuarioTable = new UsuarioTable(1L, "Victor", "victor@myp.com",  "KAskdAHJFA", "path/imagem", enderecoTable);
+	// Após serem salvas retornam com um id que foi gerado na base de dados
+	UsuarioTable usuarioTable = new UsuarioTable(1L, "Usuario", "12345678909", "Victor", "victor@myp.com",  "KAskdAHJFA", "path/imagem", null);
 	
 	@Test
 	public void CadastrarUsuarioDataProvider_success() {

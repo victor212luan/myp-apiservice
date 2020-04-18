@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,8 +35,8 @@ public class EnderecoTable {
 	@Column(name="nm_bairro", nullable = false) 
 	private String bairro;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_cidade", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_cidade")
 	private CidadeTable cidade;
 	
 	@JsonBackReference
