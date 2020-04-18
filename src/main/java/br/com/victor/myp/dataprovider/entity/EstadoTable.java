@@ -1,10 +1,15 @@
 package br.com.victor.myp.dataprovider.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class EstadoTable {
@@ -13,15 +18,18 @@ public class EstadoTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "sg_estado", length = 2, nullable = false) private String sigla;
-	@Column(name = "nm_estado", length = 20, nullable = false) private String nome;
+	@Column(name = "nm_estado", length = 20, nullable = false) 
+	private String nome;
+	
+	@JsonBackReference
+	@OneToMany(mappedBy = "estado")
+	private List<CidadeTable> listaCidades;
 	
 	public EstadoTable() {
 	}
 	
-	public EstadoTable(Long id, String sigla, String nome) {
+	public EstadoTable(Long id, String nome) {
 		this.id = id;
-		this.sigla = sigla;
 		this.nome = nome;
 	}
 
@@ -31,14 +39,6 @@ public class EstadoTable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getSigla() {
-		return sigla;
-	}
-
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
 	}
 
 	public String getNome() {

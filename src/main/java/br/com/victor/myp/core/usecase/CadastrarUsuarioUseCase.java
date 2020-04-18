@@ -16,6 +16,8 @@ public class CadastrarUsuarioUseCase {
 	private BCryptPasswordEncoder encoderPassword = new BCryptPasswordEncoder();
 	
 	public UsuarioEntity cadastrarUsuario(UsuarioEntity entity) {
+		
+		// Criptografando senha do usuário
 		String senhaUsuario = entity.getSenha();
 		entity.setSenha(encoderPassword.encode(senhaUsuario));
 		
