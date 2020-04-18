@@ -5,6 +5,8 @@ import br.com.victor.myp.entrypoint.entity.EnderecoHttpModel;
 public class UsuarioHttpModel {
 	private Long id;
 	private String nome;
+	private String tipoUsuario;
+	private String documento;
 	private String email;
 	private String senha;
 	private String imagemUsuario;
@@ -13,11 +15,13 @@ public class UsuarioHttpModel {
 	public UsuarioHttpModel(){
 	}
 
-	public UsuarioHttpModel(Long id, String nome, String email, String senha,
+	public UsuarioHttpModel(Long id, String nome, String tipoUsuario, String documento, String email, String senha,
 			String imagemUsuario, EnderecoHttpModel endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.tipoUsuario = tipoUsuario;
+		this.documento = documento;
 		this.email = email;
 		this.senha = senha;
 		this.imagemUsuario = imagemUsuario;
@@ -70,6 +74,22 @@ public class UsuarioHttpModel {
 
 	public void setEndereco(EnderecoHttpModel endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
 }
