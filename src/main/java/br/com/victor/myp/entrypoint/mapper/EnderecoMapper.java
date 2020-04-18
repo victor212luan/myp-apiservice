@@ -9,11 +9,10 @@ import br.com.victor.myp.entrypoint.entity.EnderecoHttpModel;
 
 public class EnderecoMapper {
 
-	//TODO Mapear corretamente a cidade e estado
 	public static EnderecoEntity to(EnderecoHttpModel httpModel) {
-		return Optional.ofNullable(httpModel).map(e -> new EnderecoEntity(
-			e.getId(), e.getLogradouro(), e.getNumero(), e.getComplemento(), e.getCep(),
-			e.getBairro(), CidadeMapper.to(e.getCidade())))
+		return Optional.ofNullable(httpModel).map(endereco -> new EnderecoEntity(
+			endereco.getId(), endereco.getLogradouro(), endereco.getNumero(), endereco.getComplemento(), endereco.getCep(),
+			endereco.getBairro(), CidadeMapper.to(endereco)))
 			.orElse(new EnderecoEntity());
 	}
 	
