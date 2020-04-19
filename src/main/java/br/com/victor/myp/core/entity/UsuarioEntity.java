@@ -2,6 +2,8 @@ package br.com.victor.myp.core.entity;
 
 public class UsuarioEntity {
 	private Long id;
+	private String tipoUsuario;
+	private String CpfCnpj;
 	private String nome;
 	private String email;
 	private String senha;
@@ -11,10 +13,12 @@ public class UsuarioEntity {
 	public UsuarioEntity(){
 	}
 
-	public UsuarioEntity(Long id, String nome, String email, String senha,
+	public UsuarioEntity(Long id, String tipoUsuario, String cpfCnpj, String nome, String email, String senha,
 			String imagemUsuario, EnderecoEntity endereco) {
 		super();
 		this.id = id;
+		this.tipoUsuario = tipoUsuario;
+		this.CpfCnpj = cpfCnpj;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -68,6 +72,22 @@ public class UsuarioEntity {
 
 	public void setEndereco(EnderecoEntity endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getCpfCnpj() {
+		return CpfCnpj;
+	}
+
+	public void setCpfCnpj(String cpfCnpj) {
+		CpfCnpj = cpfCnpj;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 }

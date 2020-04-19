@@ -9,13 +9,13 @@ public class EnderecoHttpModel {
 	private String complemento;
 	private String cep;
 	private String bairro;
-	
-	private CidadeHttpModel cidade;
+	private String cidade;
+	private String estado;
 	
 	public EnderecoHttpModel(){
 	}
 
-	public EnderecoHttpModel(Long id, String logradouro, Integer numero, String complemento, String cep, String bairro, CidadeHttpModel cidade) {
+	public EnderecoHttpModel(Long id, String logradouro, Integer numero, String complemento, String cep, String bairro, String cidade, String estado) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
@@ -24,6 +24,7 @@ public class EnderecoHttpModel {
 		this.cep = cep;
 		this.bairro = bairro;
 		this.cidade = cidade;
+		this.estado = estado;
 	}
 
 	public Long getId() {
@@ -74,12 +75,20 @@ public class EnderecoHttpModel {
 		this.bairro = bairro;
 	}
 
-	public CidadeHttpModel getCidade() {
+	public String getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(CidadeHttpModel cidade) {
+	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 }

@@ -16,6 +16,12 @@ public class UsuarioTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "tp_usuario", nullable = false, length = 60)
+	private String tipoUsuario;
+	
+	@Column(name = "cd_documento", nullable = false, length = 60)
+	private String CpfCnpj;
+	
 	@Column(name = "nm_usuario", nullable = false, length = 60)
 	private String nome;
 	
@@ -35,10 +41,12 @@ public class UsuarioTable {
 	public UsuarioTable(){
 	}
 
-	public UsuarioTable(Long id, String nome, String email, String senha,
+	public UsuarioTable(Long id, String tipoUsuario, String cpfCnpj, String nome, String email, String senha,
 			String imagemUsuario, EnderecoTable endereco) {
 		super();
 		this.id = id;
+		this.tipoUsuario = tipoUsuario;
+		this.CpfCnpj = cpfCnpj;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -76,6 +84,22 @@ public class UsuarioTable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public String getCpfCnpj() {
+		return CpfCnpj;
+	}
+
+	public void setCpfCnpj(String cpfCnpj) {
+		CpfCnpj = cpfCnpj;
 	}
 
 	public String getImagemUsuario() {
